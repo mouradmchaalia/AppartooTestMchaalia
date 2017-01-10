@@ -1,0 +1,14 @@
+appartoo_app:
+    resource: "@AppartooAppBundle/Resources/config/routing.yml"
+    prefix:   /user
+    
+appartoo_app_api:
+    resource: "@AppartooAppBundle/Resources/config/routing_api.yml"
+    prefix:   /api
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Créer un nouveau contact</h1>
+
+    <form method="POST">
+        <table>
+            <tr>
+                <td>Email<td/>
+                <td>   {{ form_widget(form.email) }}
+                <td/>
+            </tr>
+            <tr>
+                <td>Adresse<td/>
+                <td>{{ form_widget(form.adresse) }}<td/>
+            </tr>
+            <tr>
+                <td>Tel<td/>
+                <td>{{ form_widget(form.telephone) }}<td/>
+            </tr>
+
+            <tr>
+                <td>SiteWeb<td/>
+                <td>         {{ form_widget(form.siteweb) }} <td/>
+
+            </tr>
+
+            {{ form_rest(form) }}
+
+        </table>
+        <input  class="btn"  id="f2" type="submit" value="Ajouter" />
+
+    </form>
+{% endblock %}
+
+
+
+{# empty Twig template #}
+
