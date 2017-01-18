@@ -105,9 +105,9 @@ class ApiController extends Controller
         try {
             $contact = new Contact();
             $contact->setIdUser($request->get('idUser'));
-            $contact->setAdresse($request->get('adresse'));
+            $contact->setAddress($request->get('address'));
             $contact->setEmail($request->get('email'));
-            $contact->setSiteWeb($request->get('siteWeb'));
+            $contact->setUrl($request->get('url'));
             $contact->setTelephone($request->get('telephone'));
             $em->persist($contact);
             $em->flush();
