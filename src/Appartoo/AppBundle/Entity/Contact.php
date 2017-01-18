@@ -38,9 +38,9 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255)
      */
-    private $telephone;
+    private $phone;
 
     /**
      * @var string
@@ -115,27 +115,27 @@ class Contact
     }
 
     /**
-     * Set telephone.
+     * Set phone.
      *
-     * @param string $telephone
+     * @param string $phone
      *
      * @return Contact
      */
-    public function setTelephone($telephone)
+    public function setPhone($phone)
     {
-        $this->telephone = $telephone;
+        $this->phone = $phone;
 
         return $this;
     }
 
     /**
-     * Get telephone.
+     * Get phone.
      *
      * @return string
      */
-    public function getTelephone()
+    public function getPhone()
     {
-        return $this->telephone;
+        return $this->phone;
     }
 
     /**
