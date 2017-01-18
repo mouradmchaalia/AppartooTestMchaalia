@@ -47,7 +47,7 @@ class ContactController extends Controller
             $id = $user->getId();
             $contact->setIdUser($id);
             $em->persist($contact);
-            $em->flush($contact);
+            $em->flush();
 
             return $this->redirectToRoute('contact_show', array('id' => $contact->getId()));
         }
@@ -118,10 +118,10 @@ class ContactController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($contact);
-            $em->flush($contact);
+            $em->flush();
         }
 
-        return $this->redirectToRoute('contact_index');
+        return $this->redirectToRoute('appartoo_app_homepage');
     }
 
     /**
