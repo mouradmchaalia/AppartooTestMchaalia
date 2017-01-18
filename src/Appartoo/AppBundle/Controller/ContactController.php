@@ -12,16 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 class ContactController extends Controller
 {
     /**
+     * Method returning list of all contacts
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $usr = $this->get('security.context')->getToken()->getUser();
-        /** @noinspection PhpUndefinedMethodInspection */
-        $id = $usr->getId();
-
-        /** @noinspection PhpUndefinedMethodInspection */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $id = $user->getId();
         $contacts = $em->getRepository('AppartooAppBundle:Contact')->findByIdUser($id);
 
         return $this->render('AppartooAppBundle:Default:index.html.twig', array(
@@ -30,6 +29,8 @@ class ContactController extends Controller
     }
 
     /**
+     * Method to add new Contact
+     *
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -42,12 +43,10 @@ class ContactController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $usr = $this->get('security.context')->getToken()->getUser();
-            /** @noinspection PhpUndefinedMethodInspection */
-            $id = $usr->getId();
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $id = $user->getId();
             $contact->setIdUser($id);
             $em->persist($contact);
-            /** @noinspection PhpMethodParametersCountMismatchInspection */
             $em->flush($contact);
 
             return $this->redirectToRoute('contact_show', array('id' => $contact->getId()));
@@ -60,6 +59,8 @@ class ContactController extends Controller
     }
 
     /**
+     * This shows a single contact details with the delete form
+     *
      * @param Contact $contact
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -75,6 +76,8 @@ class ContactController extends Controller
     }
 
     /**
+     * Allow to edit a selected contact using edit form generated in the view
+     *
      * @param Request $request
      * @param Contact $contact
      *
@@ -100,6 +103,8 @@ class ContactController extends Controller
     }
 
     /**
+     * Method to delete a  selected contact
+     *
      * @param Request $request
      * @param Contact $contact
      *
@@ -113,7 +118,6 @@ class ContactController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($contact);
-            /** @noinspection PhpMethodParametersCountMismatchInspection */
             $em->flush($contact);
         }
 
@@ -121,6 +125,8 @@ class ContactController extends Controller
     }
 
     /**
+     * A private method called in deleteAction to create a delete Form
+     *
      * @param Contact $contact
      *
      * @return mixed

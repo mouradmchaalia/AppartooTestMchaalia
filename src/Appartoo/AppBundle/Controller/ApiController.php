@@ -18,44 +18,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 class ApiController extends Controller
 {
     /**
-     * @param $id
-     *
-     * @return Response
-     */
-    public function getUserAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-        $user = $em->getRepository('AppartooAppBundle:User')->find($id);
-        $data = $serializer->serialize($user, 'json');
-        $response = new Response();
-        $response->setContent($data);
-        $response->setStatusCode(200);
-
-        return $response;
-    }
-
-    /**
-     * @return Response
-     */
-    public function getAllUserAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-        $serializer = new Serializer($normalizers, $encoders);
-        $user = $em->getRepository('AppartooAppBundle:User')->findAll();
-        $data = $serializer->serialize($user, 'json');
-        $response = new Response();
-        $response->setContent($data);
-        $response->setStatusCode(200);
-
-        return $response;
-    }
-
-    /**
+     * Return a single contact by Contact Id
      * @param $id
      *
      * @return Response
@@ -76,6 +39,7 @@ class ApiController extends Controller
     }
 
     /**
+     * Return list of all contacts
      * @return Response
      */
     public function getAllContactAction()
@@ -84,8 +48,8 @@ class ApiController extends Controller
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
         $serializer = new Serializer($normalizers, $encoders);
-        $contact = $em->getRepository('AppartooAppBundle:Contact')->findAll();
-        $data = $serializer->serialize($contact, 'json');
+        $contacts = $em->getRepository('AppartooAppBundle:Contact')->findAll();
+        $data = $serializer->serialize($contacts, 'json');
         $response = new Response();
         $response->setContent($data);
         $response->setStatusCode(200);
