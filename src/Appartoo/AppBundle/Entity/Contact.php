@@ -31,9 +31,9 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255)
      */
-    private $adresse;
+    private $address;
 
     /**
      * @var string
@@ -45,9 +45,9 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="siteWeb", type="string", length=255)
+     * @ORM\Column(name="url", type="string", length=255)
      */
-    private $siteWeb;
+    private $url;
 
     /**
      * @var int
@@ -91,27 +91,27 @@ class Contact
     }
 
     /**
-     * Set adresse.
+     * Set address.
      *
-     * @param string $adresse
+     * @param string $address
      *
      * @return Contact
      */
-    public function setAdresse($adresse)
+    public function setAddress($address)
     {
-        $this->adresse = $adresse;
+        $this->address = $address;
 
         return $this;
     }
 
     /**
-     * Get adresse.
+     * Get address.
      *
      * @return string
      */
-    public function getAdresse()
+    public function getAddress()
     {
-        return $this->adresse;
+        return $this->address;
     }
 
     /**
@@ -139,27 +139,27 @@ class Contact
     }
 
     /**
-     * Set siteWeb.
+     * Set url.
      *
-     * @param string $siteWeb
+     * @param string $url
      *
      * @return Contact
      */
-    public function setSiteWeb($siteWeb)
+    public function setUrl($url)
     {
-        $this->siteWeb = $siteWeb;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get siteWeb.
+     * Get url.
      *
      * @return string
      */
-    public function getSiteWeb()
+    public function getUrl()
     {
-        return $this->siteWeb;
+        return $this->url;
     }
 
     /**
