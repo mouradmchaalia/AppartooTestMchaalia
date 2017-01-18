@@ -18,15 +18,16 @@ class ContactType extends AbstractType
             ->add('adresse', 'text')
             ->add('telephone', 'text')
             ->add('siteweb', 'text')
-        ;    }
-    
+        ;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Appartoo\AppBundle\Entity\Contact'
+            'data_class' => 'Appartoo\AppBundle\Entity\Contact',
         ));
     }
 
@@ -37,6 +38,4 @@ class ContactType extends AbstractType
     {
         return 'appartoo_appbundle_contact';
     }
-
-
 }

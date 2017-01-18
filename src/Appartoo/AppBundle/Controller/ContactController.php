@@ -6,15 +6,22 @@ use Appartoo\AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
-class DefaultController extends Controller
+/**
+ * Controleur du contact.
+ */
+class ContactController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $usr= $this->get('security.context')->getToken()->getUser();
+        $usr = $this->get('security.context')->getToken()->getUser();
+        /** @noinspection PhpUndefinedMethodInspection */
         $id = $usr->getId();
 
+        /** @noinspection PhpUndefinedMethodInspection */
         $contacts = $em->getRepository('AppartooAppBundle:Contact')->findByIdUser($id);
 
         return $this->render('AppartooAppBundle:Default:index.html.twig', array(
@@ -22,6 +29,11 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function newAction(Request $request)
     {
         $contact = new Contact();
@@ -30,10 +42,12 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $usr= $this->get('security.context')->getToken()->getUser();
+            $usr = $this->get('security.context')->getToken()->getUser();
+            /** @noinspection PhpUndefinedMethodInspection */
             $id = $usr->getId();
             $contact->setIdUser($id);
             $em->persist($contact);
+            /** @noinspection PhpMethodParametersCountMismatchInspection */
             $em->flush($contact);
 
             return $this->redirectToRoute('contact_show', array('id' => $contact->getId()));
@@ -45,7 +59,11 @@ class DefaultController extends Controller
         ));
     }
 
-
+    /**
+     * @param Contact $contact
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction(Contact $contact)
     {
         $deleteForm = $this->createDeleteForm($contact);
@@ -56,7 +74,12 @@ class DefaultController extends Controller
         ));
     }
 
-
+    /**
+     * @param Request $request
+     * @param Contact $contact
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, Contact $contact)
     {
         $deleteForm = $this->createDeleteForm($contact);
@@ -76,7 +99,12 @@ class DefaultController extends Controller
         ));
     }
 
-
+    /**
+     * @param Request $request
+     * @param Contact $contact
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function deleteAction(Request $request, Contact $contact)
     {
         $form = $this->createDeleteForm($contact);
@@ -85,13 +113,18 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($contact);
+            /** @noinspection PhpMethodParametersCountMismatchInspection */
             $em->flush($contact);
         }
 
         return $this->redirectToRoute('contact_index');
     }
 
-
+    /**
+     * @param Contact $contact
+     *
+     * @return mixed
+     */
     private function createDeleteForm(Contact $contact)
     {
         return $this->createFormBuilder()

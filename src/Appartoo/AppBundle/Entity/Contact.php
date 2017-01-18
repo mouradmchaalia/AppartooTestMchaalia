@@ -5,7 +5,7 @@ namespace Appartoo\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Contact
+ * Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="Appartoo\AppBundle\Repository\ContactRepository")
@@ -56,11 +56,10 @@ class Contact
      */
     private $idUser;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -68,9 +67,10 @@ class Contact
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
+     *
      * @return Contact
      */
     public function setEmail($email)
@@ -81,9 +81,9 @@ class Contact
     }
 
     /**
-     * Get email
+     * Get email.
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -91,9 +91,10 @@ class Contact
     }
 
     /**
-     * Set adresse
+     * Set adresse.
      *
      * @param string $adresse
+     *
      * @return Contact
      */
     public function setAdresse($adresse)
@@ -104,9 +105,9 @@ class Contact
     }
 
     /**
-     * Get adresse
+     * Get adresse.
      *
-     * @return string 
+     * @return string
      */
     public function getAdresse()
     {
@@ -114,9 +115,10 @@ class Contact
     }
 
     /**
-     * Set telephone
+     * Set telephone.
      *
      * @param string $telephone
+     *
      * @return Contact
      */
     public function setTelephone($telephone)
@@ -127,9 +129,9 @@ class Contact
     }
 
     /**
-     * Get telephone
+     * Get telephone.
      *
-     * @return string 
+     * @return string
      */
     public function getTelephone()
     {
@@ -137,9 +139,10 @@ class Contact
     }
 
     /**
-     * Set siteWeb
+     * Set siteWeb.
      *
      * @param string $siteWeb
+     *
      * @return Contact
      */
     public function setSiteWeb($siteWeb)
@@ -150,9 +153,9 @@ class Contact
     }
 
     /**
-     * Get siteWeb
+     * Get siteWeb.
      *
-     * @return string 
+     * @return string
      */
     public function getSiteWeb()
     {
@@ -160,9 +163,10 @@ class Contact
     }
 
     /**
-     * Set idUser
+     * Set idUser.
      *
-     * @param integer $idUser
+     * @param int $idUser
+     *
      * @return Contact
      */
     public function setIdUser($idUser)
@@ -173,9 +177,9 @@ class Contact
     }
 
     /**
-     * Get idUser
+     * Get idUser.
      *
-     * @return integer 
+     * @return int
      */
     public function getIdUser()
     {

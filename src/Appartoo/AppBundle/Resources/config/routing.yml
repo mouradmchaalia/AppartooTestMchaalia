@@ -1,28 +1,23 @@
 appartoo_app_homepage:
     path:     /
-    defaults: { _controller: AppartooAppBundle:Default:index }
-
-
-contact_index:
-    path:     /
-    defaults: { _controller: "AppartooAppBundle:Default:index" }
+    defaults: { _controller: "AppartooAppBundle:Contact:index" }
     methods:  GET
 
 contact_show:
     path:     /{id}/show
-    defaults: { _controller: "AppartooAppBundle:Default:show" }
+    defaults: { _controller: "AppartooAppBundle:Contact:show" }
     methods:  GET
 
 contact_new:
     path:     /new
-    defaults: { _controller: "AppartooAppBundle:Default:new" }
+    defaults: { _controller: "AppartooAppBundle:Contact:new" }
     methods:  [GET, POST]
 
 contact_edit:
     path:     /{id}/edit
-    defaults: { _controller: "AppartooAppBundle:Default:edit" }
+    defaults: { _controller: "AppartooAppBundle:Contact:edit" }
     methods:  [GET, POST]
 contact_delete:
     path:     /{id}/delete
-    defaults: { _controller: "AppartooAppBundle:Default:delete" }
+    defaults: { _controller: "AppartooAppBundle:Contact:delete" }
     methods:  DELETE
