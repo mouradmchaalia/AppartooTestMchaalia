@@ -3,8 +3,13 @@ appartoo_app:
     prefix:   /user
     
 appartoo_app_api:
-    resource: "@AppartooAppBundle/Resources/config/routing_api.yml"
+    resource: Appartoo\AppBundle\Controller\ApiController
     prefix:   /api
+    type: rest
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api-doc
 
 app:
     resource: "@AppBundle/Controller/"
