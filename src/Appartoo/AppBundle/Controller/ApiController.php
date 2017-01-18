@@ -166,11 +166,11 @@ class ApiController extends FOSRestController
         $em = $this->get('doctrine.orm.entity_manager');
         try {
             $contact = new Contact();
-            $contact->setIdUser($request->get('id_user'));
-            $contact->setAdresse($request->get('adress'));
+            $contact->setIdUser($request->get('idUser'));
+            $contact->setAddress($request->get('address'));
             $contact->setEmail($request->get('email'));
-            $contact->setSiteWeb($request->get('site_web'));
-            $contact->setTelephone($request->get('telephone'));
+            $contact->setUrl($request->get('url'));
+            $contact->setPhone($request->get('phone'));
             $em->persist($contact);
             $em->flush();
 
